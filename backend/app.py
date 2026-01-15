@@ -32,6 +32,10 @@ def decode_and_pad(text):
     # Pad to maxlen
     return pad_sequences([tokens], maxlen=maxlen)
 
+@app.route('/')
+def home():
+    return "Sentiment Analysis API is Running!"
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
