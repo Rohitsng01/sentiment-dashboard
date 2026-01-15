@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+// API Configuration from .env
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [text, setText] = useState('');
   const [result, setResult] = useState(null);
@@ -11,7 +14,7 @@ function App() {
     if (!text.trim()) return;
     setLoading(true);
     try {
-      const response = await axios.post('https://sentiment-api.onrender.com/predict', { text });
+      const response = await axios.post(API_URL, { text });
       setResult(response.data);
     } catch (error) {
       alert("Backend not responding. Check Flask!");
